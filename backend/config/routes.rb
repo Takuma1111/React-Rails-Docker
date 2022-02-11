@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :photos
+  resources :sounds
+  resources :movies
+  
 # ログイン機能のルーティング
   mount_devise_token_auth_for 'User', at: 'auth', controllers: {
     registrations: 'auth/registrations'
