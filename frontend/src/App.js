@@ -6,6 +6,8 @@ import { getCurrentUser } from "./api/auth";
 import { Home } from "./components/Home";
 import { SignIn } from "./components/SignIn";
 import { SignUp } from "./components/SignUp";
+import { Movies } from './containers/Movies.jsx';
+
 
 export const AuthContext = createContext();
 
@@ -64,6 +66,9 @@ function App() {
           </Route>
           <Route exact path="/signin">
             <SignIn />
+          </Route>
+          <Route exact path="/movies">
+            <Movies />
           </Route>
           <Private>
             <Route exact path="/">

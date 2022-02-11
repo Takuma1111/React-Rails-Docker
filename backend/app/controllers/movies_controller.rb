@@ -9,6 +9,12 @@ class MoviesController < ApplicationController
         render json: @movie
       end
     
+      def show
+        @movie = Movie.find(params[:id])
+        puts @movie
+        render json: @movie
+      end
+
       def update
         @movie = Movie.find(params[:id])
         @movie.update_attributes(movie: params[:movie])
