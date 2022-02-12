@@ -10,6 +10,14 @@ class SoundsController < ApplicationController
         @sound = Sound.create(sound: params[:sound])
         render json: @sound
       end
+
+      def show
+        @sound = Sound.find(params[:id])
+        puts "受け取ったID"
+        puts params[:id]
+        puts @sound
+        render json: @sound
+      end
     
       def update
         @sound = Sound.find(params[:id])

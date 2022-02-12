@@ -1,6 +1,6 @@
 import React, { Fragment,useReducer,useEffect } from 'react';
-import { Link } from "react-router-dom";
-import { fetchSounds } from '../api/sounds';
+
+import { findSounds } from '../api/sounds';
 
 import {
   initialState,
@@ -8,16 +8,18 @@ import {
   soundsReducer,
 } from '../reducers/sounds';
 
-export const Sounds = () => {
+export const SoundShow = ({
+    match
+  }) => {
   const [state, dispatch] = useReducer(soundsReducer, initialState);
   useEffect(() => {
     dispatch({ type: soundsActionTypes.FETCHING });
-    fetchSounds()
+    findSounds(match.params.soundId)
     .then((data) =>
       dispatch({
         type: soundsActionTypes.FETCH_SUCCESS,
        payload: {
-         sounds: data.sounds
+         sounds: data
        }
        })
       )
@@ -25,22 +27,9 @@ export const Sounds = () => {
 
   console.log(state.soundsList)
   return (
-<Fragment>
-
-<h1>動画のAPI情報一覧</h1>
-{
-state.soundsList.map((sound,index) =>
-<Link to={`/sounds/${sound.id}`} key={index} style={{ textDecoration: 'none' }}>
-
-<div>
-
-<p>{sound.name}</p>
-<p>{sound.url}</p>
-</div>
-</Link>
-)
-
-}
-</Fragment>
+    <Fragment>
+        <h1>動画のAPI情報一覧</h1>
+        <p>{state.soundsList.name}</p>
+    </Fragment>
   )
 }
