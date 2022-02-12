@@ -7,6 +7,7 @@ import { Home } from "./components/Home";
 import { SignIn } from "./components/SignIn";
 import { SignUp } from "./components/SignUp";
 import { Movies } from './containers/Movies.jsx';
+import { MovieShow } from './containers/MoviesShow.jsx';
 import { Sounds } from './containers/Sounds.jsx';
 import { Photos } from './containers/Photos.jsx';
 import Header from './components/modules/Header'
@@ -76,6 +77,15 @@ function App() {
           <Route exact path="/movies">
             <Movies />
           </Route>
+          <Route
+            exact
+            path="/movies/:moviesId"
+            render={({ match }) =>
+            <MovieShow
+            match={match}
+           />
+            }
+          />
           <Route exact path="/sounds">
             <Sounds />
           </Route>

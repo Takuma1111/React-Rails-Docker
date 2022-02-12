@@ -13,6 +13,8 @@ class MoviesController < ApplicationController
     
       def show
         @movie = Movie.find(params[:id])
+        puts "受け取ったID"
+        puts params[:id]
         puts @movie
         render json: @movie
       end

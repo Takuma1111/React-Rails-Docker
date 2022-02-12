@@ -22,6 +22,7 @@ export const moviesReducer = (state, action) => {
           fetchState: REQUEST_STATE.LOADING,
         };
       case moviesActionTypes.FETCH_SUCCESS:
+        console.log("リデューサー")
         console.log(action.payload.movies)
         return {
           fetchState: REQUEST_STATE.OK,

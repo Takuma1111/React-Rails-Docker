@@ -1,5 +1,6 @@
 import React, { Fragment,useReducer,useEffect } from 'react';
-
+import { Link } from "react-router-dom";
+  
 import { fetchMovies } from '../api/movies';
 
 import {
@@ -26,16 +27,21 @@ export const Movies = () => {
   console.log(state.moviesList)
   return (
     <Fragment>
-        <h1>動画のAPI情報一覧</h1>
-        {
-    state.moviesList.map(movie =>
-    <div>
-      <p>{movie.name}</p>
-      <p>{movie.text}</p>
-      <p>{movie.url}</p>
-   </div>
+      
+    <h1>動画のAPI情報一覧</h1>
+    {
+state.moviesList.map((movie,index) =>
+<Link to={`/movies/${movie.id}`} key={index} style={{ textDecoration: 'none' }}>
+
+<div>
+ 
+  <p>{movie.name}</p>
+  <p>{movie.url}</p>
+</div>
+</Link>
   )
-}
-    </Fragment>
+    
+    }
+</Fragment>
   )
 }
