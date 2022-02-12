@@ -7,6 +7,8 @@ import { Home } from "./components/Home";
 import { SignIn } from "./components/SignIn";
 import { SignUp } from "./components/SignUp";
 import { Movies } from './containers/Movies.jsx';
+import { Sounds } from './containers/Sounds.jsx';
+import { Photos } from './containers/Photos.jsx';
 
 
 export const AuthContext = createContext();
@@ -70,6 +72,12 @@ function App() {
           </Route>
           <Route exact path="/movies">
             <Movies />
+          </Route>
+          <Route exact path="/sounds">
+            <Sounds />
+          </Route>
+          <Route exact path="/photos">
+            <Photos />
           </Route>
           <Private>
             <Route exact path="/">

@@ -3,7 +3,7 @@ import { REQUEST_STATE } from '../constants';
 export const initialState = {
   fetchState: REQUEST_STATE.INITIAL, // データの取得状況
   postState: REQUEST_STATE.INITIAL,  // データの登録状況
-  soundsSummary: [],         
+  soundsList: [],         
 };
 
 export const soundsActionTypes = {
@@ -21,6 +21,7 @@ export const soundsReducer = (state, action) => {
         fetchState: REQUEST_STATE.LOADING,
       };
     case soundsActionTypes.FETCH_SUCCESS:
+      console.log(action.payload.sounds)
       return {
         fetchState: REQUEST_STATE.OK,
         soundsList: action.payload.sounds,

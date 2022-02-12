@@ -1,7 +1,9 @@
 class PhotosController < ApplicationController
     def index
         @photo = Photo.all
-        render json: @photo
+        render json: {
+          photos: @photo
+        }, status: :ok
       end
     
       def create

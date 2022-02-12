@@ -4,7 +4,6 @@ class MoviesController < ApplicationController
         render json: {
           movies: @movie
         }, status: :ok
-        # render json: @movie
       end
     
       def create

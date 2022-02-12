@@ -14,7 +14,6 @@ export const Movies = () => {
     dispatch({ type: moviesActionTypes.FETCHING });
     fetchMovies()
     .then((data) =>
-      // console.log(data),
       dispatch({
         type: moviesActionTypes.FETCH_SUCCESS,
        payload: {
@@ -27,7 +26,7 @@ export const Movies = () => {
   console.log(state.moviesList)
   return (
     <Fragment>
-        <h1>ff</h1>
+        <h1>動画のAPI情報一覧</h1>
         {
     state.moviesList.map(movie =>
     <div>

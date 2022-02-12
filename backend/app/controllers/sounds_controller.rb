@@ -1,7 +1,9 @@
 class SoundsController < ApplicationController
     def index
         @sound = Sound.all
-        render json: @sound
+        render json: {
+          sounds: @sound
+        }, status: :ok
       end
     
       def create

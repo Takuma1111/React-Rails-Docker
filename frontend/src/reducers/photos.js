@@ -3,7 +3,7 @@ import { REQUEST_STATE } from '../constants';
 export const initialState = {
   fetchState: REQUEST_STATE.INITIAL, // データの取得状況
   postState: REQUEST_STATE.INITIAL,  // データの登録状況
-  photosSummary: [],         
+  photosList: [],         
 };
 
 export const photosActionTypes = {
