@@ -2,9 +2,9 @@ import axios from 'axios';
 import { movies } from '../urls/index'
 
 export const fetchMovies =() => {
-  return axios.get(movies)
+  return axios.get('http://localhost:3001/movies')
   .then(res => {
-    console.log(res.data)
+    console.log('テスト');
     return res.data
   })
   .catch((e) => console.error(e))

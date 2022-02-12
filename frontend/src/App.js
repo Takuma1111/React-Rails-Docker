@@ -16,6 +16,7 @@ function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState();
 
+
   const handleGetCurrentUser = async () => {
     try {
       const res = await getCurrentUser();

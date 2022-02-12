@@ -16,29 +16,17 @@ export const moviesActionTypes = {
 //foodsActionTypesによってstateを2種類返すようにしている
 export const moviesReducer = (state, action) => {
   switch (action.type) {
-    case moviesActionTypes.FETCHING:
-        //ローディング中
-      return {
-        ...state,
-        fetchState: REQUEST_STATE.LOADING,
-      };
-    case moviesActionTypes.FETCH_SUCCESS:
-        //成功した場合
-      return {
-        fetchState: REQUEST_STATE.OK,
-        moviesList: action.payload.movies,
-      };
-      case moviesActionTypes.POSTING:
-      return {
-        ...state,
-        postState: REQUEST_STATE.LOADING,
-      };
-    case moviesActionTypes.POST_SUCCESS:
-      return {
-        ...state,
-        postState: REQUEST_STATE.OK,
-        
-      };
+      case moviesActionTypes.FETCHING:
+        return {
+          ...state,
+          fetchState: REQUEST_STATE.LOADING,
+        };
+      case moviesActionTypes.FETCH_SUCCESS:
+        console.log(action.payload.movies)
+        return {
+          fetchState: REQUEST_STATE.OK,
+          moviesList: action.payload.movies
+        };
     default:
       throw new Error();
   }
