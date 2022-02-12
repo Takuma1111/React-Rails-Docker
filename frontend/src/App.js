@@ -6,6 +6,15 @@ import { getCurrentUser } from "./api/auth";
 import { Home } from "./components/Home";
 import { SignIn } from "./components/SignIn";
 import { SignUp } from "./components/SignUp";
+import { Movies } from './containers/Movies.jsx';
+import { MovieShow } from './containers/MoviesShow.jsx';
+import { Sounds } from './containers/Sounds.jsx';
+import { SoundShow } from './containers/SoundsShow.jsx';
+import { Photos } from './containers/Photos.jsx';
+import { PhotoShow } from './containers/PhotosShow.jsx';
+import Header from './components/modules/Header'
+import Footer from './components/modules/Footer'
+
 
 export const AuthContext = createContext();
 
@@ -13,6 +22,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState();
+
 
   const handleGetCurrentUser = async () => {
     try {
@@ -57,6 +67,7 @@ function App() {
         setCurrentUser,
       }}
     >
+      <Header />
       <BrowserRouter>
         <Switch>
           <Route exact path="/signup">
@@ -65,6 +76,42 @@ function App() {
           <Route exact path="/signin">
             <SignIn />
           </Route>
+          <Route exact path="/movies">
+            <Movies />
+          </Route>
+          <Route
+            exact
+            path="/movies/:moviesId"
+            render={({ match }) =>
+            <MovieShow
+            match={match}
+           />
+            }
+          />
+          <Route exact path="/sounds">
+            <Sounds />
+          </Route>
+          <Route
+            exact
+            path="/sounds/:soundId"
+            render={({ match }) =>
+            <SoundShow
+            match={match}
+           />
+            }
+          />
+          <Route exact path="/photos">
+            <Photos />
+          </Route>
+          <Route
+            exact
+            path="/photos/:photoId"
+            render={({ match }) =>
+            <PhotoShow
+            match={match}
+           />
+            }
+          />
           <Private>
             <Route exact path="/">
               <Home />
@@ -72,6 +119,7 @@ function App() {
           </Private>
         </Switch>
       </BrowserRouter>
+      <Footer />
     </AuthContext.Provider>
   );
 }
