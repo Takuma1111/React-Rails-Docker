@@ -9,6 +9,8 @@ import { SignUp } from "./components/SignUp";
 import { Movies } from './containers/Movies.jsx';
 import { Sounds } from './containers/Sounds.jsx';
 import { Photos } from './containers/Photos.jsx';
+import Header from './components/modules/Header'
+import Footer from './components/modules/Footer'
 
 
 export const AuthContext = createContext();
@@ -62,6 +64,7 @@ function App() {
         setCurrentUser,
       }}
     >
+      <Header />
       <BrowserRouter>
         <Switch>
           <Route exact path="/signup">
@@ -86,6 +89,7 @@ function App() {
           </Private>
         </Switch>
       </BrowserRouter>
+      <Footer />
     </AuthContext.Provider>
   );
 }
