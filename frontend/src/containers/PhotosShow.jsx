@@ -1,6 +1,6 @@
 import React, { Fragment,useReducer,useEffect } from 'react';
-import { Link } from "react-router-dom";
-import { fetchPhotos } from '../api/photos';
+
+import { findPhotos } from '../api/photos';
 
 import {
   initialState,
@@ -8,39 +8,29 @@ import {
   photosReducer,
 } from '../reducers/photos';
 
-export const Photos = () => {
+export const PhotoShow = ({
+    match
+  }) => {
   const [state, dispatch] = useReducer(photosReducer, initialState);
   useEffect(() => {
     dispatch({ type: photosActionTypes.FETCHING });
-    fetchPhotos()
+    findPhotos(match.params.photoId)
     .then((data) =>
       dispatch({
         type: photosActionTypes.FETCH_SUCCESS,
        payload: {
-        photos: data.photos
+        photos: data
        }
        })
       )
   }, [])
 
+  console.log("findした検索結果")
   console.log(state.photosList)
   return (
     <Fragment>
-
-    <h1>動画のAPI情報一覧</h1>
-    {
-state.photosList.map((photo,index) =>
-<Link to={`/photos/${photo.id}`} key={index} style={{ textDecoration: 'none' }}>
-
-<div>
-
-  <p>{photo.name}</p>
-  <p>{photo.url}</p>
-</div>
-</Link>
-  )
-
-    }
-</Fragment>
+        <h1>動画のAPI情報一覧</h1>
+        <p>{state.photosList.name}</p>
+    </Fragment>
   )
 }

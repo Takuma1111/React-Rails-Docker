@@ -10,6 +10,7 @@ import { Movies } from './containers/Movies.jsx';
 import { MovieShow } from './containers/MoviesShow.jsx';
 import { Sounds } from './containers/Sounds.jsx';
 import { Photos } from './containers/Photos.jsx';
+import { PhotoShow } from './containers/PhotosShow.jsx';
 import Header from './components/modules/Header'
 import Footer from './components/modules/Footer'
 
@@ -92,6 +93,15 @@ function App() {
           <Route exact path="/photos">
             <Photos />
           </Route>
+          <Route
+            exact
+            path="/photos/:photoId"
+            render={({ match }) =>
+            <PhotoShow
+            match={match}
+           />
+            }
+          />
           <Private>
             <Route exact path="/">
               <Home />

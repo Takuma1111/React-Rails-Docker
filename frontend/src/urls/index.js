@@ -1,5 +1,5 @@
 // サーバーサイドで定義したURL文字列を返す定数をいくつか設定している
-const DEFAULT_API_LOCALHOST = 'http://localhost:3001/'
+const DEFAULT_API_LOCALHOST = 'http://localhost:3001'
 
 export const sounds = `${DEFAULT_API_LOCALHOST}/sounds`
 //引数を受け取ってそれを文字列と結合させ、返り値として返している
