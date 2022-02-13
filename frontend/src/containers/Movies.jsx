@@ -44,7 +44,6 @@ export const Movies = () => {
     {
       state.moviesList.map((movie,index) =>
         <Link to={`/movies/${movie.id}`} key={index} style={{ textDecoration: 'none' }}>
-
         <div>
           <p>{movie.name}</p>
           <video src={movie.url}  width="320" height = "300" />
