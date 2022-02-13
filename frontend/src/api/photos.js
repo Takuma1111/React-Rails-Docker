@@ -12,8 +12,6 @@ export const fetchPhotos =() => {
 export const findPhotos =(photoId) => {
   return axios.get(photoIndex(photoId))
   .then(res => {
-    console.log("検索結果のデータ")
-    console.log(res.data)
     return res.data
   })
   .catch((e) => console.error(e))
