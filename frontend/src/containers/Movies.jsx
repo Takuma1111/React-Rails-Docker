@@ -11,13 +11,18 @@ import {
 
 const MoviesContentsList = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
   margin: 50px;
   margin-right: 50px;
   margin-left:  50px;
 
-  display: -webkit-flex;
-  -webkit-justify-content: space-between;
+`;
+
+const Title = styled.h1`
+font-family:"MS Pゴシック",sans-serif;
+
 `;
 
 export const Movies = () => {
@@ -39,14 +44,17 @@ export const Movies = () => {
   return (
     <Fragment>
       
-    <h1>動画のAPI情報一覧</h1>
+     <Title>
+      <h1>投稿された映像作品一覧</h1>
+    </Title> 
     <MoviesContentsList>       
     {
       state.moviesList.map((movie,index) =>
         <Link to={`/movies/${movie.id}`} key={index} style={{ textDecoration: 'none' }}>
         <div>
           <p>{movie.name}</p>
-          <video src={movie.url}  width="320" height = "300" />
+          
+          <video src={movie.url}  width="350" height = "300" />
         </div>
         </Link>
       )
