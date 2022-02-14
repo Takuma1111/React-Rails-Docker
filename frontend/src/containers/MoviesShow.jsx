@@ -37,10 +37,12 @@ export const MovieShow = ({
     <Fragment>
         <h1>動画</h1>
         {
-            <div className='player-wrapper'>
+          <center>
+            <div>
               <p>{state.moviesList.name}</p>
               <ReactPlayer url={state.moviesList.url} id="MainPlay" muted playing loop controls={true} />
             </div>
+          </center>
         }
 5    </Fragment>
   )
