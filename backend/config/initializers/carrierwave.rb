@@ -11,8 +11,8 @@ require 'carrierwave/storage/fog'
             config.fog_public = false
             config.fog_credentials = {
               provider: 'AWS',
-              aws_access_key_id: 'AKIAZO5KI5H6QQNZ2D6N', # アクセスキー
-              aws_secret_access_key: 'c+F38ZldRK9fk1tfz35xk7Jva6lKK5OT7GBfbukR', # シークレットアクセスキー
+              aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'], # アクセスキー
+              aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'], # シークレットアクセスキー
               region: 'ap-northeast-1', # リージョン
               path_style: true
             }
@@ -23,8 +23,8 @@ require 'carrierwave/storage/fog'
             config.fog_public = false
             config.fog_credentials = {
               provider: 'AWS',
-              aws_access_key_id: 'AKIAZO5KI5H6QQNZ2D6N', # アクセスキー
-              aws_secret_access_key: 'c+F38ZldRK9fk1tfz35xk7Jva6lKK5OT7GBfbukR', # シークレットアクセスキー
+              aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'], # アクセスキー
+              aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'], # シークレットアクセスキー
               region: 'ap-northeast-1', # リージョン
               path_style: true
             }
