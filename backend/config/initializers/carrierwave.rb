@@ -4,32 +4,33 @@ require 'carrierwave/storage/fog'
  
 # unless Rails.env.development? || Rails.env.test?
     CarrierWave.configure do |config|
-        config.asset_host = "http://localhost:3001"
-        config.storage = :file
-        config.cache_storage = :file
-      config.fog_provider = 'fog/aws' 
-    #   config.storage :fog
-      config.fog_directory  = 'rails-data'       
-                 
-      config.fog_credentials = {
-        provider: 'AWS',
-        aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-        aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-        region: ENV['AWS_REGION']
-      }
-    # The maximum period for authenticated_urls is only 7 days.
-    # config.aws_authenticated_url_expiration = 60 * 60 * 24 * 7
- 
-    # Set custom options such agit s cache control to leverage browser caching
-    # config.aws_attributes = {
-    #   expires: 1.week.from_now.httpdate,
-    #   cache_control: 'max-age=604800'
-    # }
-    #   config.fog_public     = false                                                
-    #   config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
-    #   config.fog_directory  = 'rails-data'
-    #   config.cache_storage = :fog
-    # end
+        if Rails.env.production? # 本番環境の場合はS3へアップロード
+            config.storage :fog
+            config.fog_provider = 'fog/aws'
+            config.fog_directory  = 'rails-data' # バケット名
+            config.fog_public = false
+            config.fog_credentials = {
+              provider: 'AWS',
+              aws_access_key_id: 'AKIAZO5KI5H6QQNZ2D6N', # アクセスキー
+              aws_secret_access_key: 'c+F38ZldRK9fk1tfz35xk7Jva6lKK5OT7GBfbukR', # シークレットアクセスキー
+              region: 'ap-northeast-1', # リージョン
+              path_style: true
+            }
+          else # 本番環境以外の場合はアプリケーション内にアップロード
+            config.storage :fog
+            config.fog_provider = 'fog/aws'
+            config.fog_directory  = 'rails-data' # バケット名
+            config.fog_public = false
+            config.fog_credentials = {
+              provider: 'AWS',
+              aws_access_key_id: 'AKIAZO5KI5H6QQNZ2D6N', # アクセスキー
+              aws_secret_access_key: 'c+F38ZldRK9fk1tfz35xk7Jva6lKK5OT7GBfbukR', # シークレットアクセスキー
+              region: 'ap-northeast-1', # リージョン
+              path_style: true
+            }
+            # config.storage :file
+            # config.enable_processing = false if Rails.env.test?
+          end
   end
 
 #   CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/

@@ -26,7 +26,7 @@ class SoundsController < ApplicationController
       end
     
       def destroy
-        @sound = Sound.find(params[:id])
+        @sound = Sound.find(param s[:id])
         if @sound.destroy
           head :no_content, status: :ok
         else
