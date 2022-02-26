@@ -35,7 +35,7 @@ state.photosList.map((photo,index) =>
 <div>
 
   <p>{photo.name}</p>
-  <p>{photo.url}</p>
+  <img src={photo.url} alt="" width="300" height="300" border="0"/>
 </div>
 </Link>
   )
