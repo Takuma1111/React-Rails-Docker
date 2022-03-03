@@ -1,4 +1,4 @@
 # React-Rails-Docker
-バックエンドをRails
+Docker環境でバックエンドをRails
 フロントエンドをReactでWebアプリを作成しております
-AWSのECSへデプロイです
+AWSのECSへデプロイ予定です。
